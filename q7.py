@@ -1,16 +1,21 @@
-primes = [2]
+
+def find_n_primes(n):
+    result = []
+    curr = 2
+    while len(result) < n:
+        for i in range(2, int(curr/2)+1):
+            if curr % i == 0: # Number is divisible
+                break
+        else:
+            result.append(curr)
+        curr += 1
+    return result
 
 
-def find_prime(lim):
-    while len(primes) < lim+1:
-        for i in range(50):
-            for x in range(2, round(i/2)+1):
-                if i % x == 0:
-                    break
-                else:
-                    primes.append(i)
-    else:
-        print(list(set(primes)))
+def main():
+    r = find_n_primes(20)
+    print(r)
 
 
-find_prime(10)
+if __name__ == "__main__":
+    main()
